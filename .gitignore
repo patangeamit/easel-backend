@@ -1,1 +1,6 @@
 venv/
+__pycache__/
+*.pyc
+*.pyo
+easel/media/
+db.sqlite3
