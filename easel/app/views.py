@@ -1,9 +1,11 @@
 from rest_framework import viewsets
 from .models import Artwork, Artist, Comment, Essay
 from .serializers import ArtworkSerializer, ArtistSerializer, CommentSerializer, EssaySerializer
+from rest_framework.permissions import IsAuthenticated
 
 class ArtworkViewSet(viewsets.ModelViewSet):
     queryset = Artwork.objects.all()
+    permission_classes = [IsAuthenticated]
     serializer_class = ArtworkSerializer
 class ArtistViewSet(viewsets.ModelViewSet):
     queryset = Artist.objects.all()
