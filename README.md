@@ -22,5 +22,3 @@
 - **Django on AWS**: EC2 for backend, RDS for DB, S3 for media.
 - **React Web App**: Hosted separately (Vercel, S3, or CloudFront).
 - **Kotlin App**: Published on the Play Store.
-
-This setup ensures **easy maintenance and cross-platform compatibility**. Do you want a CI/CD pipeline for automatic deployments, or will you handle updates manually?
