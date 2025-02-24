@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Art Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <div class="max-w-6xl mx-auto p-1">
+      <h1 class="text-3xl font-bold text-center my-6">Art Gallery</h1>
+
+      <div
+        id="artwork-container"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-auto"
+      >
+        {% include "artworks/partials/artworks.html" %}
+      </div>
+
+      <button
+        hx-get="{% url 'load_more_artworks' %}"
+        hx-target="#artwork-container"
+        hx-swap="beforeend"
+        class="mt-4 px-6 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-700"
+      >
+        Load More
+      </button>
+    </div>
+  </body>
+</html>

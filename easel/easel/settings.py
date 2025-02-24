@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'django_filters',
-    'drf_spectacular',
     'app',
-    'user'
+    'user',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -132,6 +132,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
 }
 
 from datetime import timedelta
@@ -145,13 +147,20 @@ SIMPLE_JWT = {
 
 AUTH_USER_MODEL = "user.User"
 
-REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-}
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Easel API',
     'DESCRIPTION': 'API Documentation',
     'VERSION': '1.0.0',
-    'SERVE_INCLUDE_SCHEMA': False,  # Set to True if you want to include the schema
+    # 'SERVE_INCLUDE_SCHEMA': False,  # Set to True if you want to include the schema
 }
+
+import os
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# In development, allow Django to serve media files
+if DEBUG:
+    from django.conf.urls.static import static
+    MEDIAFILES = static(MEDIA_URL, document_root=MEDIA_ROOT)

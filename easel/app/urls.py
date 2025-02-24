@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import ArtworkViewSet, ArtistViewSet, CommentViewSet, EssayViewSet
+from .views import ArtworkViewSet, ArtistViewSet, CommentViewSet, EssayViewSet, artwork_list, load_more_artworks
 
 router = DefaultRouter()
 router.register(r'artworks', ArtworkViewSet, basename="artworks")
